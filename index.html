@@ -4,122 +4,513 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DELIN BEAUTY | مجموعه آرایش دلین</title>
+<meta name="theme-color" content="#d41465">
+<title>مجموعه آرایشی دلین | DELIN BEAUTY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial;background:#fffafb;color:#382d32}
-header{background:#fff;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1dce4;position:sticky;top:0}
-.logo{font-size:23px;font-weight:bold;color:#a85e79;letter-spacing:2px}
-.cart{background:#a85e79;color:white;padding:10px 15px;border-radius:20px}
-.hero{text-align:center;padding:65px 20px;background:linear-gradient(135deg,#f9e8ee,#fff8fa)}
-.hero h1{font-size:34px;color:#9d536e}
-.hero p{line-height:2;color:#705b63}
-.btn{display:inline-block;background:#a85e79;color:white;padding:13px 25px;border-radius:25px;text-decoration:none;border:0}
-section{padding:35px 6%}
-h2{text-align:center;color:#a85e79;margin-bottom:25px}
-.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px}
-.category,.product{background:white;border:1px solid #f0dce4;border-radius:16px;padding:20px;text-align:center}
-.category{font-weight:bold;color:#8e5269}
-.product .pic{font-size:48px;background:#fff2f6;padding:20px;border-radius:12px}
-.product h3{font-size:15px}
-.product p{color:#987481;font-size:13px}
-.product button{background:#a85e79;color:white;border:0;padding:10px 14px;border-radius:20px}
-.festival{background:#f8e5ec;text-align:center;border-radius:18px;padding:30px;line-height:2}
-.about{text-align:center;line-height:2.2;color:#705b63}
-footer{background:#513b45;color:white;text-align:center;padding:30px;line-height:2}
-#cartItems{line-height:2}
+:root {
+  --pink:#d41465;
+  --dark:#9e0c49;
+  --light:#fff0f6;
+  --white:#fff;
+  --text:#29232a;
+  --muted:#88818a;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  font-family:'Vazirmatn',Tahoma,sans-serif;
+  background:#fff;
+  color:var(--text);
+}
+button {font-family:inherit;cursor:pointer}
+.container {width:min(1100px,92%);margin:auto}
+
+/* Header */
+header {
+  background:white;
+  position:sticky;
+  top:0;
+  z-index:20;
+  box-shadow:0 3px 18px #00000009;
+}
+.nav {
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.logo {line-height:1.2}
+.logo-en {
+  direction:ltr;
+  color:var(--pink);
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:4px;
+}
+.logo-fa {font-size:12px;color:#777}
+.cart-top {
+  background:var(--pink);
+  color:white;
+  border:0;
+  border-radius:30px;
+  padding:10px 16px;
+  font-size:13px;
+}
+
+/* Welcome */
+.hero {
+  background:linear-gradient(135deg,#fff0f6,#fff 70%);
+  padding:38px 0 30px;
+}
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:25px;
+}
+.hero h1 {font-size:clamp(25px,5vw,42px);line-height:1.6;margin:10px 0}
+.hero h1 span {color:var(--pink)}
+.hero p {color:#716a72;line-height:2.1;font-size:14px}
+.hero-tag {
+  display:inline-block;
+  color:var(--pink);
+  background:#ffe0ed;
+  padding:7px 13px;
+  border-radius:30px;
+  font-size:12px;
+}
+.hero-photo {
+  width:100%;
+  max-width:340px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:50%;
+  border:7px solid white;
+  box-shadow:0 12px 35px #a80e4c24;
+  display:block;
+  margin:auto;
+}
+.main-btn {
+  display:inline-block;
+  text-decoration:none;
+  background:var(--pink);
+  color:white;
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:14px;
+  margin-top:10px;
+}
+
+/* Festival */
+.festival {
+  margin:25px auto;
+  padding:24px;
+  border-radius:22px;
+  color:white;
+  background:linear-gradient(120deg,#a90c4b,#e51b72);
+  position:relative;
+  overflow:hidden;
+}
+.festival small {opacity:.85}
+.festival h2 {font-size:23px;margin:8px 0}
+.festival p {font-size:13px;line-height:2;margin:0;opacity:.95}
+
+/* Sections */
+section.content {padding:24px 0}
+.section-title {margin-bottom:18px}
+.section-title h2 {font-size:22px;margin:0 0 5px}
+.section-title p {font-size:12px;color:var(--muted);margin:0}
+
+/* Categories */
+.categories {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.category {
+  border:1px solid #f3d9e4;
+  background:#fff8fb;
+  border-radius:16px;
+  padding:17px 8px;
+  text-align:center;
+  color:var(--text);
+  font-size:13px;
+  transition:.2s;
+}
+.category.active,.category:active {
+  background:var(--pink);
+  color:white;
+  border-color:var(--pink);
+}
+
+/* Products */
+.products {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+.product {
+  border:1px solid #f1e8ed;
+  border-radius:17px;
+  overflow:hidden;
+  background:white;
+}
+.product-art {
+  height:120px;
+  background:linear-gradient(140deg,#ffe3ef,#fff5f9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#bd3972;
+  font-size:14px;
+  font-weight:600;
+}
+.product-info {padding:11px}
+.product h3 {font-size:13px;margin:0 0 7px}
+.price {font-size:12px;color:var(--pink);margin-bottom:10px}
+.add-btn {
+  width:100%;
+  border:0;
+  background:var(--pink);
+  color:white;
+  border-radius:10px;
+  padding:9px 5px;
+  font-size:12px;
+}
+
+/* About */
+.about {
+  background:#fff3f8;
+  border-radius:20px;
+  padding:23px;
+  line-height:2;
+  margin:25px auto;
+}
+.about h2 {font-size:20px;color:var(--pink);margin:0 0 8px}
+.about p {font-size:13px;color:#665d64;margin:0}
+
+/* Cart */
+.cart-section {
+  background:#fff8fb;
+  border:1px solid #f3dce6;
+  border-radius:20px;
+  padding:18px;
+  margin:25px auto;
+}
+.cart-section h2 {font-size:20px;margin:0 0 15px}
+.cart-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid #f0e2e9;
+  padding:12px 0;
+  font-size:13px;
+}
+.remove-btn {
+  border:0;
+  color:#c01855;
+  background:#ffe5ef;
+  border-radius:8px;
+  padding:6px 9px;
+}
+.empty {color:#999;font-size:13px;padding:10px 0}
+.finish-btn {
+  background:var(--pink);
+  color:white;
+  border:0;
+  border-radius:13px;
+  width:100%;
+  padding:14px;
+  margin-top:15px;
+  font-size:14px;
+}
+footer {
+  background:#241820;
+  color:white;
+  padding:28px 0 90px;
+  text-align:center;
+  line-height:2.2;
+}
+footer h2 {color:#ff7caf;font-size:22px}
+footer p {font-size:13px;color:#e2d5dc;margin:5px}
+footer a {color:#ff9ac2}
+
+/* Toast */
+#toast {
+  position:fixed;
+  bottom:85px;
+  right:50%;
+  transform:translateX(50%) translateY(20px);
+  background:#29232a;
+  color:white;
+  padding:12px 20px;
+  border-radius:30px;
+  font-size:13px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:50;
+}
+#toast.show {opacity:1;transform:translateX(50%) translateY(0)}
+
+/* Mobile cart bar */
+.mobile-cart {
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  box-shadow:0 -4px 20px #00000012;
+  padding:10px 4%;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.mobile-cart button {
+  border:0;
+  background:var(--pink);
+  color:white;
+  padding:11px 18px;
+  border-radius:25px;
+}
+@media(max-width:650px) {
+  .hero-grid {grid-template-columns:1fr;text-align:center}
+  .hero-photo {max-width:230px;grid-row:1}
+  .hero {padding:28px 0}
+  .products {grid-template-columns:repeat(2,1fr)}
+  .categories {grid-template-columns:repeat(2,1fr)}
+  .product-art {height:110px}
+}
+@media(min-width:651px) {
+  .mobile-cart {display:none}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<div class="logo">DELIN BEAUTY</div>
-<div class="cart">سبد خرید: <span id="count">0</span></div>
+  <div class="container nav">
+    <div class="logo">
+      <div class="logo-en">D E L I N</div>
+      <div class="logo-fa">مجموعه آرایشی دلین</div>
+    </div>
+    <button class="cart-top" onclick="goCart()">
+      سبد خرید (<span id="topCount">0</span>)
+    </button>
+  </div>
 </header>
 
-<div class="hero">
-<h1>به دنیای زیبایی دلین خوش آمدید</h1>
-<p>مجموعه آرایش دلین<br>زیبایی، کیفیت و تنوع در کنار شما</p>
-<a href="#products" class="btn">مشاهده محصولات</a>
-</div>
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-tag">به دنیای زیبایی خوش آمدید</span>
+        <h1>خوش آمدید به<br><span>مجموعه آرایشی دلین</span></h1>
+        <p>
+          در دلین، دنیایی از محصولات آرایشی، مراقبتی و زیبایی را
+          با تنوعی جذاب تجربه کنید.
+        </p>
+        <a class="main-btn" href="#products">مشاهده محصولات</a>
+      </div>
+      <div>
+        <img class="hero-photo" src="profile.jpg"
+             alt="مجموعه آرایشی دلین"
+             onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
 
-<section>
-<h2>دسته‌بندی محصولات</h2>
-<div class="categories">
-<div class="category">💄 لوازم آرایشی</div>
-<div class="category">🧴 مراقبت پوست</div>
-<div class="category">🎨 رنگ و مو</div>
-<div class="category">💇 لوازم برقی</div>
-</div>
-</section>
+  <div class="container">
+    <section class="festival">
+      <small>DELIN BEAUTY</small>
+      <h2>جشنواره‌ها و پیشنهادهای ویژه</h2>
+      <p>برای اطلاع از تخفیف‌ها و جشنواره‌های مجموعه دلین،
+        صفحه ما را دنبال کنید.</p>
+    </section>
+  </div>
 
-<section id="products">
-<h2>محصولات دلین</h2>
-<div class="products" id="productList"></div>
-</section>
+  <section class="content container" id="categories">
+    <div class="section-title">
+      <h2>دسته‌بندی محصولات</h2>
+      <p>محصول مورد نظرتان را انتخاب کنید</p>
+    </div>
+    <div class="categories">
+      <button class="category active" onclick="filterProducts('همه',this)">همه محصولات</button>
+      <button class="category" onclick="filterProducts('آرایشی',this)">لوازم آرایشی</button>
+      <button class="category" onclick="filterProducts('مراقبتی',this)">مراقبتی و بهداشتی</button>
+      <button class="category" onclick="filterProducts('مو',this)">رنگ و مو</button>
+      <button class="category" onclick="filterProducts('برقی',this)">لوازم برقی</button>
+      <button class="category" onclick="filterProducts('عطر',this)">عطر و خوشبوکننده</button>
+    </div>
+  </section>
 
-<section>
-<div class="festival">
-<h2>جشنواره‌ها و پیشنهادهای ویژه دلین</h2>
-<p>برای اطلاع از تخفیف‌ها و پیشنهادهای ویژه ما همراه باشید.</p>
-</div>
-</section>
+  <section class="content container" id="products">
+    <div class="section-title">
+      <h2>محصولات فروشگاه</h2>
+      <p>برای ثبت سفارش، محصولات را به سبد خرید اضافه کنید</p>
+    </div>
+    <div class="products" id="productList"></div>
+  </section>
 
-<section>
-<h2>سبد خرید شما</h2>
-<div id="cartItems">هنوز محصولی انتخاب نکرده‌اید.</div>
-<button class="btn" onclick="sendOrder()">ثبت سفارش از طریق واتساپ</button>
-</section>
+  <div class="container">
+    <section class="about">
+      <h2>درباره مجموعه آرایشی دلین</h2>
+      <p>
+        مجموعه آرایشی دلین با هدف ارائه انواع لوازم آرایشی و مراقبتی،
+        محصولات اورجینال و باکیفیت، کامل‌ترین لاین رنگ و مو و
+        لوازم برقی اورجینال در کنار شماست.
+        زیبایی، حق هر لحظه شماست.
+      </p>
+    </section>
 
-<section>
-<h2>درباره مجموعه دلین</h2>
-<p class="about">مجموعه آرایش دلین، ارائه‌دهنده انواع لوازم آرایشی و مراقبتی، محصولات اورجینال و باکیفیت، کامل‌ترین لاین رنگ و مو و لوازم برقی اورجینال.</p>
-</section>
+    <section class="cart-section" id="cart">
+      <h2>سبد خرید شما (<span id="cartCount">0</span>)</h2>
+      <div id="cartItems"><div class="empty">سبد خرید شما خالی است.</div></div>
+      <button class="finish-btn" onclick="finishOrder()">نهایی کردن سفارش در واتساپ</button>
+    </section>
+  </div>
+</main>
 
 <footer>
-<strong>DELIN BEAUTY</strong><br>
-مجموعه آرایش دلین | سقز<br>
-برای ارتباط و سفارش از طریق واتساپ با ما در تماس باشید.
+  <div class="container">
+    <h2>DELIN BEAUTY</h2>
+    <strong>مجموعه آرایشی دلین</strong>
+    <p>سقز | پلاک B25</p>
+    <p>آدرس: به‌زودی تکمیل می‌شود</p>
+    <p>تلفن و واتساپ: به‌زودی تکمیل می‌شود</p>
+    <p>مشاوره اختصاصی و معرفی محصولات</p>
+    <p>تمامی حقوق متعلق به مجموعه آرایشی دلین است.</p>
+  </div>
 </footer>
 
+<div class="mobile-cart">
+  <div>سبد خرید: <strong id="bottomCount">0</strong> کالا</div>
+  <button onclick="goCart()">مشاهده سبد خرید</button>
+</div>
+
+<div id="toast">محصول به سبد خرید اضافه شد</div>
+
 <script>
-const products=[
-{name:"محصولات آرایشی",icon:"💄"},
-{name:"محصولات مراقبت پوست",icon:"🧴"},
-{name:"رنگ و محصولات مو",icon:"🎨"},
-{name:"لوازم برقی آرایشی",icon:"💇"}
+// بعداً شماره واتساپ مجموعه را اینجا وارد می‌کنیم.
+// فرمت: کد کشور + شماره، بدون + و بدون صفر اول
+const WHATSAPP_NUMBER = "";
+
+// محصولات نمونه هستند؛ نام و قیمت واقعی را بعداً جایگزین کن.
+const products = [
+  {id:1,name:"رژ لب",category:"آرایشی",price:"استعلام قیمت"},
+  {id:2,name:"ریمل",category:"آرایشی",price:"استعلام قیمت"},
+  {id:3,name:"کرم پودر",category:"آرایشی",price:"استعلام قیمت"},
+  {id:4,name:"محصول مراقبت پوست",category:"مراقبتی",price:"استعلام قیمت"},
+  {id:5,name:"محصول مراقبت مو",category:"مراقبتی",price:"استعلام قیمت"},
+  {id:6,name:"رنگ مو",category:"مو",price:"استعلام قیمت"},
+  {id:7,name:"سشوار",category:"برقی",price:"استعلام قیمت"},
+  {id:8,name:"اتو مو",category:"برقی",price:"استعلام قیمت"},
+  {id:9,name:"عطر",category:"عطر",price:"استعلام قیمت"}
 ];
-let cart=[];
-const list=document.getElementById("productList");
-products.forEach((p,i)=>{
-list.innerHTML+=`<div class="product">
-<div class="pic">${p.icon}</div>
-<h3>${p.name}</h3>
-<p>برای اطلاع از قیمت تماس بگیرید</p>
-<button onclick="add(${i})">افزودن به سبد</button>
-</div>`;
-});
-function add(i){
-cart.push(products[i].name);
-document.getElementById("count").innerText=cart.length;
-showCart();
+
+let cart = [];
+
+function showProducts(category="همه") {
+  const list = document.getElementById("productList");
+  const filtered = category==="همه"
+    ? products : products.filter(p=>p.category===category);
+
+  list.innerHTML = filtered.map(p=>`
+    <article class="product">
+      <div class="product-art">${p.name}</div>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <div class="price">${p.price}</div>
+        <button class="add-btn" onclick="addToCart(${p.id})">
+          افزودن به سبد
+        </button>
+      </div>
+    </article>
+  `).join("");
 }
-function showCart(){
-document.getElementById("cartItems").innerHTML=
-cart.length?cart.map((x,i)=>`${i+1}. ${x} <button onclick="removeItem(${i})">حذف</button>`).join("<br>"):"سبد خرید خالی است.";
+
+function filterProducts(category,button) {
+  document.querySelectorAll(".category").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  showProducts(category);
+  document.getElementById("products").scrollIntoView({behavior:"smooth"});
 }
-function removeItem(i){
-cart.splice(i,1);
-document.getElementById("count").innerText=cart.length;
-showCart();
+
+function addToCart(id) {
+  const product = products.find(p=>p.id===id);
+  const existing = cart.find(p=>p.id===id);
+  if(existing) existing.qty++;
+  else cart.push({...product,qty:1});
+  updateCart();
+  showToast("محصول به سبد خرید اضافه شد");
 }
-function sendOrder(){
-if(!cart.length){alert("سبد خرید خالی است");return;}
-const phone="989XXXXXXXXX";
-const message="سلام، برای سفارش این محصولات پیام می‌دهم:\n"+cart.join("\n");
-window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(message),"_blank");
+
+function removeFromCart(id) {
+  cart = cart.filter(p=>p.id!==id);
+  updateCart();
 }
+
+function updateCart() {
+  const count = cart.reduce((sum,p)=>sum+p.qty,0);
+  document.getElementById("topCount").textContent=count;
+  document.getElementById("cartCount").textContent=count;
+  document.getElementById("bottomCount").textContent=count;
+
+  const box=document.getElementById("cartItems");
+  if(cart.length===0) {
+    box.innerHTML='<div class="empty">سبد خرید شما خالی است.</div>';
+    return;
+  }
+
+  box.innerHTML=cart.map(p=>`
+    <div class="cart-row">
+      <span>${p.name} × ${p.qty}</span>
+      <button class="remove-btn" onclick="removeFromCart(${p.id})">حذف</button>
+    </div>
+  `).join("");
+}
+
+function goCart() {
+  document.getElementById("cart").scrollIntoView({behavior:"smooth"});
+}
+
+function finishOrder() {
+  if(cart.length===0) {
+    showToast("ابتدا محصولی به سبد خرید اضافه کنید");
+    return;
+  }
+  if(!WHATSAPP_NUMBER) {
+    alert("شماره واتساپ مجموعه هنوز تنظیم نشده است. بعداً شماره را در کد وارد می‌کنیم.");
+    return;
+  }
+
+  let message="سلام، برای ثبت سفارش از مجموعه آرایشی دلین پیام می‌دهم:\n\n";
+  cart.forEach(p=>{
+    message += `• ${p.name} - تعداد: ${p.qty}\n`;
+  });
+  message += "\nلطفاً برای تکمیل سفارش راهنمایی بفرمایید.";
+  const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message);
+  window.open(url,"_blank");
+}
+
+let toastTimer;
+function showToast(message) {
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.classList.remove("show"),2200);
+}
+
+showProducts();
 </script>
 </body>
 </html>
-
