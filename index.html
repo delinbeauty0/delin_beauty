@@ -328,7 +328,20 @@ footer a {color:#ff9ac2}
     </div>
   </section>
 
-  <div class="container">
+  <div class="categories">
+  <button class="category active" onclick="filterProducts('همه',this)">همه محصولات</button>
+  <button class="category" onclick="filterProducts('رژلب مایع',this)">رژلب مایع</button>
+  <button class="category" onclick="filterProducts('رژگونه',this)">رژگونه</button>
+  <button class="category" onclick="filterProducts('شامپو',this)">شامپو</button>
+  <button class="category" onclick="filterProducts('ماسک',this)">ماسک</button>
+  <button class="category" onclick="filterProducts('کرم پا',this)">کرم پا</button>
+  <button class="category" onclick="filterProducts('بادی اسپلش',this)">بادی اسپلش</button>
+  <button class="category" onclick="filterProducts('آبرسان',this)">آبرسان</button>
+  <button class="category" onclick="filterProducts('هایلایتر',this)">هایلایتر</button>
+  <button class="category" onclick="filterProducts('مو',this)">مو</button>
+  <button class="category" onclick="filterProducts('لوسیون',this)">لوسیون</button>
+  <button class="category" onclick="filterProducts('حجم‌دهنده',this)">حجم‌دهنده</button>
+  </div>
     <section class="festival">
       <small>DELIN BEAUTY</small>
       <h2>جشنواره‌ها و پیشنهادهای ویژه</h2>
@@ -403,17 +416,22 @@ footer a {color:#ff9ac2}
 // فرمت: کد کشور + شماره، بدون + و بدون صفر اول
 const WHATSAPP_NUMBER = "";
 
-// محصولات نمونه هستند؛ نام و قیمت واقعی را بعداً جایگزین کن.
+// محصولات نمونه هستند؛ نام و قیمت واقعی را بعداً جایگزین کن
 const products = [
-  {id:1,name:"رژ لب",category:"آرایشی",price:"استعلام قیمت"},
-  {id:2,name:"ریمل",category:"آرایشی",price:"استعلام قیمت"},
-  {id:3,name:" کرم‌پودر گابرینی GABRINI ",category:"آرایشی",price:"استعلام قیمت",shades:["Porcelain","Natural","Warm Beige","Tan"],image:"IMG_20261107_212233_752.jpg"},
-  {id:4,name:"محصول مراقبت پوست",category:"مراقبتی",price:"استعلام قیمت"},
-  {id:5,name:"محصول مراقبت مو",category:"مراقبتی",price:"استعلام قیمت"},
-  {id:6,name:"رنگ مو",category:"مو",price:"استعلام قیمت"},
-  {id:7,name:"سشوار",category:"برقی",price:"استعلام قیمت"},
-  {id:8,name:"اتو مو",category:"برقی",price:"استعلام قیمت"},
-  {id:9,name:"عطر",category:"عطر",price:"استعلام قیمت"}
+  {id:1,name:"رژگونه چهار رنگ",category:"رژگونه",price:"۵۷۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۷۰۲۵۶.jpg"},
+  {id:2,name:"کرم ترک پا",category:"کرم پا",price:"۳۲۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۷۰۳۱۴.jpg"},
+  {id:3,name:"آبرسان ME4",category:"آبرسان",price:"۱٬۵۵۰٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۷۰۳۳۸.jpg"},
+  {id:4,name:"درمارولر پوست و مو",category:"مو",price:"۲۲۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۹۳۱۱۲.jpg"},
+  {id:5,name:"لوسیون وازلین",category:"لوسیون",price:"۴۹۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۹۲۷۵۳.jpg"},
+  {id:6,name:"حجم‌دهنده گابرینی",category:"حجم‌دهنده",price:"۳۹۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۷۰۴۰۷.jpg"},
+  {id:7,name:"ماسک فینو",category:"ماسک",price:"۱٬۷۵۰٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۷۰۷۲۸.jpg"},
+  {id:8,name:"شامپو فینو",category:"شامپو",price:"۱٬۷۵۰٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۷۰۷۳۷.jpg"},
+  {id:9,name:"پیلاف اولیبولا",category:"رژلب مایع",price:"ناموجود",image:"IMG_۲۰۲۶۱۱۰۸_۱۹۲۷۱۶.jpg"},
+  {id:10,name:"بادی اسپلش بیلی آیلیش",category:"بادی اسپلش",price:"۵۵۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۹۲۷۳۰.jpg"},
+  {id:11,name:"اسپری Pink",category:"بادی اسپلش",price:"۵۹۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۹۲۸۰۹.jpg"},
+  {id:12,name:"پالت هایلایتر ۴ رنگ",category:"هایلایتر",price:"۲۵۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۹۳۰۴۲.jpg"},
+  {id:13,name:"بادی اسپلش اسکلارا",category:"بادی اسپلش",price:"۴۷۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۹۳۰۵۹.jpg"},
+  {id:14,name:"هایلایتر مدادی",category:"هایلایتر",price:"۳۲۵٬۰۰۰ تومان",image:"IMG_۲۰۲۶۱۱۰۸_۱۹۳۱۲۷.jpg"}
 ];
 
 let cart = [];
